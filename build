@@ -14,7 +14,7 @@ appname="TubeReaver"
 debname="tubereaver"
 
 # Define 'debvers'
-debvers="1.4.3"
+debvers="1.4.4"
 
 # Define 'debarch'
 debarch="all"
@@ -96,8 +96,8 @@ chmod 0755 "${pkgroot}/DEBIAN/preinst" "${pkgroot}/DEBIAN/postinst"
 # Ensure your main.py has a Python3 shebang '#!/usr/bin/env python3'
 install -m 0755 "${execfile}" "${pkgroot}/usr/local/lib/${debname}/${debname}.py"
 
-# Install pytube folder
-cp -r pytube "${pkgroot}/usr/local/lib/${debname}/"
+# Install pytubefix folder
+cp -r pytubefix "${pkgroot}/usr/local/lib/${debname}/"
 
 # Install nodejs_wheel dependency
 cp -r "${vendorpath}/nodejs_wheel" "${pkgroot}/usr/local/lib/${debname}/"

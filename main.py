@@ -60,12 +60,12 @@ from urllib.request import Request
 from urllib.request import urlopen
 
 # Import local packages
-from pytube import Playlist
-from pytube import YouTube
-from pytube.cli import on_progress as progressdownload
+from pytubefix import Playlist
+from pytubefix import YouTube
+from pytubefix.cli import on_progress as progressdownload
 
 # Define 'VERSION'
-VERSION = "v1.4.3"
+VERSION = "v1.4.4"
 
 # Define 'APPNAME'
 APPNAME = "TubeReaver"
@@ -806,7 +806,7 @@ class DialogCompleted(QDialog):
         self.adjustSize()
         parent_obj = self.parent()
         if isinstance(parent_obj, QWidget):
-            parent = cast(QWidget, parent_obj)
+            parent = parent_obj
             center = parent.geometry().center()
             self.move(center - self.rect().center())
         self.exec()
@@ -1343,6 +1343,9 @@ class TubeReaver(QWidget):
     Provides a complete GUI interface for configuring and managing downloads.
     Handles user interaction, table display, and coordination with background workers.
     """
+
+    # Declare the update checker attribute for static type checkers.
+    updatecheck: Optional["UpdateChecker"] = None
 
     # Function '__init__'
     def __init__(self):
